@@ -24,4 +24,3 @@ import { LoggerService } from './logger/logger.service';
   providers: [LoggerService],
 })
 export class AppModule {}
-// test
