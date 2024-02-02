@@ -19,14 +19,16 @@ export class LoggerService {
           this.formattingMessage,
         ),
       }),
+      new winston.transports.File({ filename: 'combined.log' }),
+      new winston.transports.File({ filename: 'error.log', level: 'error' }),
     ],
   });
 
-  info(message: string): void {
-    this.logger.info(message);
+  info(message: string, context?: string): void {
+    this.logger.info(message, { context });
   }
 
-  error(message: string): void {
-    this.logger.error(message);
+  error(message: string, context?: string): void {
+    this.logger.error(message, { context });
   }
 }
