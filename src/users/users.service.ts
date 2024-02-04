@@ -5,6 +5,7 @@ import * as bcrypt from 'bcrypt';
 import { User } from './entity/user.entity';
 import { AuthPayload } from 'src/auth/dto/auth.dto';
 import { UpdateUserDto } from './dto /update-user.dto';
+import { CreateUserDto } from './dto /create-user.entity';
 
 @Injectable()
 export class UsersService {
@@ -13,12 +14,13 @@ export class UsersService {
     private usersRepository: Repository<User>,
   ) {}
 
-  async signUp(payload: AuthPayload): Promise<void> {
-    const { username, password } = payload;
+  async signUp(payload: CreateUserDto): Promise<void> {
+    const { username, password, role } = payload;
 
     const user = new User();
     user.username = username;
     user.password = await bcrypt.hash(password, 10);
+    user.role = role;
 
     await this.usersRepository.save(user);
   }
