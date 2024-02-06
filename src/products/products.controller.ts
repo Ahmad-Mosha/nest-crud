@@ -20,13 +20,17 @@ import { UpdateProductDto } from './dto/update-product.dto';
 import { LoggerInterceptor } from 'src/interceptors/logging.interceptors';
 import { RolesGuard } from 'src/auth/roles.guard';
 import { Roles } from 'src/decorators/roles.decorator';
+import { ApiOperation, ApiParam, ApiQuery, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('products')
 @Controller('products')
 export class ProductsController {
   constructor(private readonly productService: ProductsService) {}
 
   @UseGuards(JwtAuthGuard)
   @UseInterceptors(LoggerInterceptor)
+  @ApiOperation({ summary: 'Create a new product' })
+  @ApiParam({ name: 'CreateProductDto', required: true })
   @Post()
   async create(
     @Body() payload: CreateProductDto,
@@ -37,6 +41,7 @@ export class ProductsController {
 
   @UseGuards(JwtAuthGuard)
   @UseInterceptors(LoggerInterceptor)
+  @ApiOperation({ summary: 'Get all products' })
   @Get('all')
   async findAll(@GetUser() user: User) {
     return await this.productService.findAll(user);
@@ -44,6 +49,10 @@ export class ProductsController {
 
   @UseGuards(JwtAuthGuard)
   @Get('search')
+  @ApiQuery({ name: 'search', required: false })
+  @ApiOperation({
+    summary: 'Search for a product, url example: /products/search?search=test',
+  })
   async searchProducts(
     @Query('search') search: string,
     @GetUser() user: User,
@@ -53,6 +62,9 @@ export class ProductsController {
 
   @UseGuards(JwtAuthGuard)
   @Patch(':id')
+  @UseInterceptors(LoggerInterceptor)
+  @ApiOperation({ summary: 'Update a product' })
+  @ApiParam({ name: 'id', required: true })
   async update(
     @Param('id') id: number,
     @Body() payload: UpdateProductDto,
@@ -65,6 +77,8 @@ export class ProductsController {
   @Roles(UserRole.ADMIN)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @UseInterceptors(LoggerInterceptor)
+  @ApiOperation({ summary: 'Delete a product, only for admin users' })
+  @ApiParam({ name: 'id', required: true })
   async delete(@Param('id') id: number, @GetUser() user: User) {
     console.log(user.role);
     return this.productService.remove(id, user);
