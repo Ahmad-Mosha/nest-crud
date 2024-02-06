@@ -22,3 +22,4 @@ services:
       POSTGRES_PORT: 5432
     ports:
       - 3000:3000
+
