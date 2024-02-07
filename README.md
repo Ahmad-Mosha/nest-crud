@@ -1,3 +1,83 @@
+# NestJS CRUD API with Authentication and Authorization
+
+A simple NestJS CRUD API featuring two modules - Users and Products. This project includes various features such as JWT-based authentication, role-based authorization, exception filters, Swagger documentation, rate limiting, configuration management, unit testing and logging capabilities.
+
+## Features
+
+- **Authentication:**
+  - JWT-based authentication
+  - Passport for local and JWT strategies
+  - Role-based authorization for Users
+
+- **Modules:**
+  - Users Module: Handles user-related operations
+  - Products Module: Manages product information
+
+- **Middleware and Interceptors:**
+  - Logging middleware
+  - Logging interceptor for request/response logging
+
+- **Error Handling:**
+  - Exception filters for graceful error handling
+
+- **Documentation:**
+  - Swagger documentation for API endpoints
+
+- **Testing:**
+  - Product Controller Testing: `npm run test:product-controller`
+  - Product Service Testing: `npm run test:product-service`
+
+- **Security:**
+  - Rate limiting using NestJS Throttler
+
+- **Configuration:**
+  - ConfigModule for easy configuration management
+
+- **Database:**
+  - TypeORM for database interaction
+  - PostgreSQL as the chosen database
+
+## Prerequisites
+
+Make sure you have the following installed:
+
+- Node.js (>=14.0.0)
+- Docker
+- Docker Compose
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/your-repo.git
+   cd your-repo
+
+   1. install dependencies
+   npm install
+
+
+Set up environment variables:
+Create a .env file based on .env.example and add the required configurations.
+
+Start the application using Docker Compose:
+```bash
+   docker-compose up -d
+```
+
+Usage
+Access the Swagger documentation at: http://localhost:3000/api
+Use the API endpoints as documented for Users and Products modules.
+
+
+
+
+
+
+
+
+
+
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
