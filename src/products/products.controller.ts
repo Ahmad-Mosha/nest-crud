@@ -21,6 +21,7 @@ import { LoggerInterceptor } from 'src/interceptors/logging.interceptors';
 import { RolesGuard } from 'src/auth/roles.guard';
 import { Roles } from 'src/decorators/roles.decorator';
 import { ApiOperation, ApiParam, ApiQuery, ApiTags } from '@nestjs/swagger';
+import { SkipThrottle } from '@nestjs/throttler';
 
 @ApiTags('products')
 @Controller('products')
@@ -50,6 +51,7 @@ export class ProductsController {
   @UseGuards(JwtAuthGuard)
   @Get('search')
   @ApiQuery({ name: 'search', required: false })
+  @SkipThrottle()
   @ApiOperation({
     summary: 'Search for a product, url example: /products/search?search=test',
   })

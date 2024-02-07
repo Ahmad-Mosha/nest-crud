@@ -4,6 +4,8 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { ProductsModule } from './products/products.module';
 import { LoggerService } from './logger/logger.service';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -17,10 +19,22 @@ import { LoggerService } from './logger/logger.service';
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
+    ThrottlerModule.forRoot([
+      {
+        limit: 10,
+        ttl: 6000,
+      },
+    ]),
     UsersModule,
     AuthModule,
     ProductsModule,
   ],
-  providers: [LoggerService],
+  providers: [
+    LoggerService,
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard,
+    },
+  ],
 })
 export class AppModule {}
