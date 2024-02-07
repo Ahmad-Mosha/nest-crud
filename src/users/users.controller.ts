@@ -28,7 +28,7 @@ export class UsersController {
   @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Update user profile' })
   @ApiParam({ name: 'id', required: true })
-  async updateProfile(@Param('id') id: string, @Body() payload: UpdateUserDto) {
+  async updateProfile(@Param('id') id: number, @Body() payload: UpdateUserDto) {
     return await this.usersService.update(id, payload);
   }
 }

@@ -40,7 +40,7 @@ export class UsersService {
     return this.usersRepository.find();
   }
 
-  async update(id: string, payload: UpdateUserDto): Promise<User> {
+  async update(id: number, payload: UpdateUserDto): Promise<User> {
     const user = await this.usersRepository.findOne({ where: { id } });
 
     if (!user) {
