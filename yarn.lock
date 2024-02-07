@@ -824,7 +824,7 @@
     path-to-regexp "3.2.0"
     swagger-ui-dist "5.11.0"
 
-"@nestjs/testing@^10.0.0":
+"@nestjs/testing@^10.3.1":
   version "10.3.1"
   resolved "https://registry.npmjs.org/@nestjs/testing/-/testing-10.3.1.tgz"
   integrity sha512-74aSAugWT31jSPnStyRWDXgjHXWO3GYaUfAZ2T7Dml88UGkGy95iwaWgYy7aYM8/xVFKcDYkfL5FAYqZYce/yg==
