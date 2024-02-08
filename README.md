@@ -1,6 +1,6 @@
-# NestJS CRUD API with Authentication and Authorization
+# NestJS CRUD API 
 
-A simple NestJS CRUD API featuring two modules - Users and Products. This project includes various features such as JWT-based authentication, role-based authorization, exception filters, Swagger documentation, rate limiting, configuration management, unit testing and logging capabilities.
+A simple NestJS CRUD API featuring two modules - Users and Products. This project includes various features such as JWT-based authentication, role-based authorization, exception filters, Swagger documentation, rate limiting, configuration management, Docker, unit testing and logging capabilities.
 
 ## Features
 
