@@ -22,6 +22,8 @@ A simple NestJS CRUD API featuring two modules - Users and Products. This projec
 
 - **Documentation:**
   - Swagger documentation for API endpoints
+  - ![Swagger Screenshot](https://github.com/Ahmad-Mosha/nest-crud/raw/main/sawgForDoc.png)
+
 
 - **Testing:**
   - Product Controller Testing: `npm run test:product-controller`
